@@ -1,4 +1,4 @@
-module github.com/vasile4ek/tages-test-proto
+module github.com/vasile4ek/tages-test/proto
 
 go 1.25.1
 

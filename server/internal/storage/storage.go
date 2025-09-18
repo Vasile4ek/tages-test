@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"sync"
 
-	file_service "github.com/vasile4ek/file-service-proto/gen"
+	file_service "github.com/vasile4ek/tages-test/proto/gen"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
