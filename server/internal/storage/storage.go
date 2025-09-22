@@ -10,6 +10,7 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
+// это должен быть интерфейс
 type FileStorage struct {
 	basePath string
 	mu       sync.RWMutex
@@ -26,6 +27,7 @@ func (s *FileStorage) SaveFile(filename string, data []byte) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
+	filename = filepath.Base(filename)
 	filePath := filepath.Join(s.basePath, filename)
 	if err := os.WriteFile(filePath, data, 0644); err != nil {
 		return fmt.Errorf("failed to save file: %w", err)
@@ -37,6 +39,7 @@ func (s *FileStorage) GetFile(filename string) ([]byte, error) {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 
+	filename = filepath.Base(filename)
 	filePath := filepath.Join(s.basePath, filename)
 	data, err := os.ReadFile(filePath)
 	if err != nil {
